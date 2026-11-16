@@ -21,8 +21,9 @@ void imprime(Pessoa *cabeca);
 int main(){
 Pessoa cabeca;
 cabeca.prox = NULL;
+char cpf_ref[] = "123456789-1";
 
-inserir(&cabeca,15,"123456789-1");
+inserir(&cabeca,15,cpf_ref);
 //inserir(&cabeca,15);
 //inserir(&cabeca,15);
 //inserir(&cabeca,15);
@@ -36,7 +37,8 @@ void inserir(Pessoa *cabeca, int valor, char *cpf){
 
    novo -> prox = NULL;
    novo -> valor = valor;
-   strcpy(cpf,novo->cpf);
+   novo -> cpf = cpf;
+
 
    Pessoa *atual = cabeca;
 
@@ -53,7 +55,8 @@ void imprime(Pessoa *cabeca){
    Pessoa *atual = cabeca -> prox;
 
    while (atual != NULL){
-      printf("Item %3d\n", atual -> valor, atual -> cpf);
+      printf("Item %3d\n", atual -> valor);
+      printf("cpf %s \n", atual -> cpf);
       atual = atual -> prox;
    }
 }
