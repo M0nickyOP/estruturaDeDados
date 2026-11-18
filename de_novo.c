@@ -16,39 +16,36 @@ void inserir(Pessoa *cabeca, int valor, char *cpf);
 //void editar();
 void liberarEspaco(Pessoa *cabeca);
 void imprime(Pessoa *cabeca);
- int contador = 0;
+
+//==================== VARIAVEIS GLOBAIS ====================================
+int tamanhoPessoa = 0;
 
 int main(){
 Pessoa cabeca;
 cabeca.prox = NULL;
-char cpf_ref[] = "123456789-1";
 
-inserir(&cabeca,15,cpf_ref);
+inserir(&cabeca,15,"123456789-1");
 //inserir(&cabeca,15);
 //inserir(&cabeca,15);
 //inserir(&cabeca,15);
 
 imprime(&cabeca);
-
 }
 
 void inserir(Pessoa *cabeca, int valor, char *cpf){
    Pessoa *novo = (Pessoa*)malloc(sizeof(Pessoa));
 
    novo -> prox = NULL;
-   novo -> valor = valor;
-   novo -> cpf = cpf;
-
-
+   novo -> valor = valor;   
+   strcpy(novo -> cpf, cpf);
    Pessoa *atual = cabeca;
 
    while(atual ->prox !=NULL){
       atual = atual -> prox ;
    }
    atual -> prox = novo;
-         contador++;
 
-
+   tamanhoPessoa++;
 }
 
 void imprime(Pessoa *cabeca){
